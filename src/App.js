@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
+import BuscarPeliculas from './pages/BuscarPeliculas';
+import PeliculasState from './context/PeliculasState';
+import PeliculaInfo from './pages/PeliculaInfo';
+import {HashRouter as Router, Switch, Route} from 'react-router-dom';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PeliculasState>
+      <Router>
+        <Switch>
+          <Route exact path={"/"} component={BuscarPeliculas} />
+          <Route exact path={"/pelicula/:id"} component={PeliculaInfo} />
+        </Switch>
+      </Router>
+    </PeliculasState>
   );
 }
 
